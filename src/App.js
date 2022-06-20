@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Flex,
-  Text,
-  VStack,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
+import { ChakraProvider, Box, Flex, Text, VStack, Grid, useColorMode } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import ReactAudioPlayer from 'react-audio-player';
+import { theme } from './styles';
 import { verses } from './data';
 const header = `Olive's Bible Verses`;
 
@@ -21,6 +14,7 @@ const Line = ({ text, quotes, style = {} }) =>
   ));
 
 const Verse = ({ verse }) => {
+  const { colorMode } = useColorMode();
   const { title, text, audio } = verse;
 
   return (
@@ -32,13 +26,10 @@ const Verse = ({ verse }) => {
       borderRadius="5px"
       p="20px"
       m="20px"
+      bg={colorMode === 'dark' ? theme.colors.bgDark : theme.colors.bgLight}
     >
       <Box p="10px">
-        <Line
-          text={text}
-          quotes
-          style={{ align: 'left', fontStyle: 'italic' }}
-        />
+        <Line text={text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
         <Text align="right">{`- ${title}`}</Text>
       </Box>
       <ReactAudioPlayer
@@ -51,13 +42,15 @@ const Verse = ({ verse }) => {
   );
 };
 
-const Verses = ({ verses }) => (
-  <Box>
-    {verses.map((verse, index) => (
-      <Verse key={index} verse={verse} />
-    ))}
-  </Box>
-);
+const Verses = ({ verses }) => {
+  return (
+    <Box>
+      {verses.map((verse, index) => (
+        <Verse key={index} verse={verse} />
+      ))}
+    </Box>
+  );
+};
 
 const Header = ({ header }) => (
   <Box>
@@ -76,12 +69,7 @@ const Header = ({ header }) => (
 const App = () => {
   return (
     <ChakraProvider theme={theme}>
-      <Flex
-        textAlign="center"
-        fontSize="xl"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Flex textAlign="center" fontSize="xl" alignItems="center" justifyContent="center">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8} maxWidth="600px">
