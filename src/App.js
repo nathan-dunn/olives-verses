@@ -4,53 +4,74 @@ import {
   Box,
   Flex,
   Text,
-  Link,
   VStack,
-  Code,
   Grid,
-  Divider,
   theme,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import ReactAudioPlayer from 'react-audio-player';
+import { verses } from './data';
+const header = `Olive's Bible Verses`;
 
-const verses = [
-  {
-    title: 'Deuteronomy 4:29',
-    text: 'But if from there you seek the Lord your God, you will find him if you seek him with all your heart and with all your soul.',
-    audio: require('./assets/deuteronomy_4_29.m4a'),
-  },
-  {
-    title: 'Pease Porridge',
-    text: `Pease porridge hot, pease porridge cold, Pease porridge in the pot, nine days old. Some like it hot, some like it cold, Some like it in the pot, nine days old.`,
-    audio: require('./assets/pease_porridge.m4a'),
-  },
-];
+const Line = ({ text, quotes, style = {} }) =>
+  (quotes ? '"' + text + '"' : text).split('\n').map((line, index) => (
+    <Text key={index} {...style}>
+      {line.trim()}
+    </Text>
+  ));
 
 const Verse = ({ verse }) => {
   const { title, text, audio } = verse;
+
   return (
     <Flex
       direction="column"
       justify="space-evenly"
       align="center"
-      mb="20px"
+      border="1px solid lightgray"
+      borderRadius="5px"
       p="20px"
+      m="20px"
     >
       <Box p="10px">
-        <Text align="left">{`"${text}"`}</Text>
+        <Line
+          text={text}
+          quotes
+          style={{ align: 'left', fontStyle: 'italic' }}
+        />
         <Text align="right">{`- ${title}`}</Text>
       </Box>
       <ReactAudioPlayer
         src={audio}
         autoPlay={false}
         controls={true}
-        style={{ margin: '20px' }}
+        style={{ margin: '10px', marginTop: '30px' }}
       />
-      <Divider />
     </Flex>
   );
 };
+
+const Verses = ({ verses }) => (
+  <Box>
+    {verses.map((verse, index) => (
+      <Verse key={index} verse={verse} />
+    ))}
+  </Box>
+);
+
+const Header = ({ header }) => (
+  <Box>
+    <Line
+      text={header}
+      quotes={false}
+      style={{
+        align: 'center',
+        fontSize: '40px',
+        fontFamily: `'Homemade Apple', cursive`,
+      }}
+    />
+  </Box>
+);
 
 const App = () => {
   return (
@@ -59,15 +80,8 @@ const App = () => {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
-            <Text fontSize="40px" mb="20px">
-              Olive's Bible Verses
-            </Text>
-            <Divider />
-            <Box>
-              {verses.map((verse, index) => (
-                <Verse key={index} verse={verse} />
-              ))}
-            </Box>
+            <Header header={header} />
+            <Verses verses={verses} />
           </VStack>
         </Grid>
       </Box>

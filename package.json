@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "surge": "NODE_ENV=production yarn build && surge --project ./build --domain https://olives-bible-verses.surge.sh"
+    "surge": "NODE_ENV=production yarn build && surge --project ./build --domain https://olives-verses.surge.sh"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
