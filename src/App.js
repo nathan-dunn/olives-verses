@@ -23,7 +23,8 @@ const Line = ({ text, quotes, style = {} }) =>
 const Verse = ({ verse }) => {
   const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked'));
   const isChecked = storedCheckedList && storedCheckedList.includes(verse.title);
-  console.log('>>isChecked:', verse.title, isChecked);
+
+  const [change, setChange] = useState(false);
 
   return (
     <Flex
@@ -33,17 +34,18 @@ const Verse = ({ verse }) => {
       border="1px solid lightgray"
       borderRadius="5px"
       p="20px"
-      m="20px"
+      mb="20px"
       bg={theme.colors.bgLight}
     >
       <Checkbox
-        // checked={isChecked}
         defaultChecked={isChecked}
         alignSelf="flex-start"
-        colorScheme="gray"
+        colorScheme="lightgray"
         mt="-10px"
         ml="-10px"
+        size="lg"
         onChange={e => {
+          setChange(!change);
           const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked')) || [];
           const idx = storedCheckedList.indexOf(verse.title);
           const updated =
@@ -53,23 +55,32 @@ const Verse = ({ verse }) => {
           localStorage.setItem('@bibleChecked', JSON.stringify(updated));
         }}
       />
-      <Box p="10px">
-        <Line text={verse.text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
-        <Text align="right">{`- ${verse.title}`}</Text>
-      </Box>
-      <ReactAudioPlayer
-        src={verse.audio}
-        autoPlay={false}
-        controls={true}
-        style={{ margin: '10px', marginTop: '30px' }}
-      />
+      {isChecked && (
+        <Box>
+          <Text>{verse.title}</Text>
+        </Box>
+      )}
+      {!isChecked && (
+        <Box>
+          <Box p="10px">
+            <Line text={verse.text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
+            <Text align="right">{`- ${verse.title}`}</Text>
+          </Box>
+          <ReactAudioPlayer
+            src={verse.audio}
+            autoPlay={false}
+            controls={true}
+            style={{ margin: '10px', marginTop: '30px' }}
+          />
+        </Box>
+      )}
     </Flex>
   );
 };
 
 const Verses = ({ verses }) => {
   return (
-    <Box>
+    <Box align="center" w="100%">
       {verses.map((verse, index) => (
         <Verse key={index} verse={verse} />
       ))}
@@ -91,12 +102,10 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Flex textAlign="center" fontSize="xl" alignItems="center" justifyContent="center">
-        <Grid minH="100vh" p={3}>
-          <VStack spacing={8} maxWidth="600px">
-            <Header header={title} />
-            <Verses verses={verses} />
-          </VStack>
-        </Grid>
+        <VStack spacing={8} w="90%" maxW="650px" p="10px">
+          <Header header={title} />
+          <Verses verses={verses} />
+        </VStack>
       </Flex>
     </ChakraProvider>
   );
