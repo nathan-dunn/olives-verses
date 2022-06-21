@@ -22,7 +22,8 @@ const Line = ({ text, quotes, style = {} }) =>
 
 const Verse = ({ verse }) => {
   const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked'));
-  const isChecked = storedCheckedList && storedCheckedList.includes(title);
+  const isChecked = storedCheckedList && storedCheckedList.includes(verse.title);
+  console.log('>>isChecked:', verse.title, isChecked);
 
   return (
     <Flex
@@ -36,15 +37,17 @@ const Verse = ({ verse }) => {
       bg={theme.colors.bgLight}
     >
       <Checkbox
-        checked={isChecked}
+        // checked={isChecked}
+        defaultChecked={isChecked}
         alignSelf="flex-start"
         colorScheme="gray"
         mt="-10px"
         ml="-10px"
         onChange={e => {
           const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked')) || [];
+          const idx = storedCheckedList.indexOf(verse.title);
           const updated =
-            storedCheckedList.indexOf(verse.title) > -1
+            idx > -1
               ? [...storedCheckedList.slice(0, idx), ...storedCheckedList.slice(idx + 1)]
               : [...storedCheckedList, verse.title];
           localStorage.setItem('@bibleChecked', JSON.stringify(updated));
