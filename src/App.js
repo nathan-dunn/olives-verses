@@ -1,6 +1,14 @@
-import React from 'react';
-import { ChakraProvider, Box, Flex, Text, VStack, Grid, useColorMode } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
+import React, { useState, useEffect } from 'react';
+import {
+  ChakraProvider,
+  Box,
+  Flex,
+  Text,
+  VStack,
+  Grid,
+  useColorMode,
+  Checkbox,
+} from '@chakra-ui/react';
 import ReactAudioPlayer from 'react-audio-player';
 import { theme } from './styles';
 import { title, verses } from './data';
@@ -13,8 +21,8 @@ const Line = ({ text, quotes, style = {} }) =>
   ));
 
 const Verse = ({ verse }) => {
-  const { colorMode } = useColorMode();
-  const { title, text, audio } = verse;
+  const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked'));
+  const isChecked = storedCheckedList && storedCheckedList.includes(title);
 
   return (
     <Flex
@@ -25,14 +33,29 @@ const Verse = ({ verse }) => {
       borderRadius="5px"
       p="20px"
       m="20px"
-      bg={colorMode === 'dark' ? theme.colors.bgDark : theme.colors.bgLight}
+      bg={theme.colors.bgLight}
     >
+      <Checkbox
+        checked={isChecked}
+        alignSelf="flex-start"
+        colorScheme="gray"
+        mt="-10px"
+        ml="-10px"
+        onChange={e => {
+          const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked')) || [];
+          const updated =
+            storedCheckedList.indexOf(verse.title) > -1
+              ? [...storedCheckedList.slice(0, idx), ...storedCheckedList.slice(idx + 1)]
+              : [...storedCheckedList, verse.title];
+          localStorage.setItem('@bibleChecked', JSON.stringify(updated));
+        }}
+      />
       <Box p="10px">
-        <Line text={text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
-        <Text align="right">{`- ${title}`}</Text>
+        <Line text={verse.text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
+        <Text align="right">{`- ${verse.title}`}</Text>
       </Box>
       <ReactAudioPlayer
-        src={audio}
+        src={verse.audio}
         autoPlay={false}
         controls={true}
         style={{ margin: '10px', marginTop: '30px' }}
@@ -56,11 +79,7 @@ const Header = ({ header }) => (
     <Line
       text={header}
       quotes={false}
-      style={{
-        align: 'center',
-        fontSize: '40px',
-        fontFamily: `'Homemade Apple', cursive`,
-      }}
+      style={{ align: 'center', fontSize: '40px', fontFamily: `'Homemade Apple', cursive` }}
     />
   </Box>
 );
@@ -70,7 +89,6 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <Flex textAlign="center" fontSize="xl" alignItems="center" justifyContent="center">
         <Grid minH="100vh" p={3}>
-          {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
           <VStack spacing={8} maxWidth="600px">
             <Header header={title} />
             <Verses verses={verses} />

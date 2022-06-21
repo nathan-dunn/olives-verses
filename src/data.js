@@ -1,4 +1,4 @@
-export const title = `Olive's \n Bible Verses`;
+export const title = `Bible Verses`;
 
 export const verses = [
   {
