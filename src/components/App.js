@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Flex,
-  Text,
-  VStack,
-  Grid,
-  useColorMode,
-  Checkbox,
-} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, ChakraProvider, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import ReactAudioPlayer from 'react-audio-player';
-import { theme } from './styles';
-import { title, verses } from './data';
+import { theme } from '../styles';
+import { header, verses } from '../data';
+
+const isMobile = window.matchMedia('only screen and (max-width: 760px)').matches;
 
 const Line = ({ text, quotes, style = {} }) =>
   (quotes ? '"' + text + '"' : text).split('\n').map((line, index) => (
@@ -26,37 +19,27 @@ const Verse = ({ verse }) => {
 
   const [change, setChange] = useState(false);
 
+  const handleClick = e => {
+    setChange(!change);
+    const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked')) || [];
+    const idx = storedCheckedList.indexOf(verse.title);
+    const updated =
+      idx > -1
+        ? [...storedCheckedList.slice(0, idx), ...storedCheckedList.slice(idx + 1)]
+        : [...storedCheckedList, verse.title];
+    localStorage.setItem('@bibleChecked', JSON.stringify(updated));
+  };
+
   return (
     <Flex
-      direction="row"
-      justify="flex-start"
-      align="flex-start"
-      //
       border="1px solid lightgray"
       borderRadius="5px"
       p="20px"
       mb="20px"
       bg={theme.colors.bgLight}
+      cursor="pointer"
+      onClick={handleClick}
     >
-      <Checkbox
-        defaultChecked={isChecked}
-        // alignSelf="center"
-        // width={isChecked ? null : '100%'}
-        colorScheme="lightgray"
-        // mt={isChecked ? null : '-10px'}
-        // ml={isChecked ? null : '-20px'}
-        size="lg"
-        onChange={e => {
-          setChange(!change);
-          const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked')) || [];
-          const idx = storedCheckedList.indexOf(verse.title);
-          const updated =
-            idx > -1
-              ? [...storedCheckedList.slice(0, idx), ...storedCheckedList.slice(idx + 1)]
-              : [...storedCheckedList, verse.title];
-          localStorage.setItem('@bibleChecked', JSON.stringify(updated));
-        }}
-      />
       {isChecked ? (
         <Box w="100%">
           <Text>{verse.title}</Text>
@@ -89,22 +72,38 @@ const Verses = ({ verses }) => {
   );
 };
 
-const Header = ({ header }) => (
-  <Box mt="60px">
-    <Line
-      text={header}
-      quotes={false}
-      style={{ align: 'center', fontSize: '40px', fontFamily: `'Homemade Apple', cursive` }}
-    />
-  </Box>
-);
+const Header = ({ header }) => {
+  return (
+    <Flex
+      flexDirection={isMobile ? 'column' : 'row'}
+      justify="center"
+      flex-wrap="wrap"
+      mt="40px"
+      mb="20px"
+      align={isMobile ? 'center' : 'flex-end'}
+      w="100%"
+    >
+      <Image
+        src={require('../assets/book-heart.png')}
+        boxSize="50px"
+        objectFit="contain"
+        mr="20px"
+        mb={isMobile ? '20px' : 'auto'}
+      />
+
+      <Text fontSize="4xl" fontFamily={`'Homemade Apple', cursive`} mb="-10px">
+        {header}
+      </Text>
+    </Flex>
+  );
+};
 
 const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Flex textAlign="center" fontSize="xl" alignItems="center" justifyContent="center">
         <VStack spacing={8} w="90%" maxW="650px" p="10px">
-          <Header header={title} />
+          <Header header={header} />
           <Verses verses={verses} />
         </VStack>
       </Flex>
