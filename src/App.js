@@ -40,6 +40,7 @@ const Verse = ({ verse }) => {
       <Checkbox
         defaultChecked={isChecked}
         alignSelf="flex-start"
+        width="100%"
         colorScheme="lightgray"
         mt="-10px"
         ml="-10px"
