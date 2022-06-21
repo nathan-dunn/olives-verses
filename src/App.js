@@ -28,9 +28,10 @@ const Verse = ({ verse }) => {
 
   return (
     <Flex
-      direction="column"
-      justify="space-evenly"
-      align="center"
+      direction="row"
+      justify="flex-start"
+      align="flex-start"
+      //
       border="1px solid lightgray"
       borderRadius="5px"
       p="20px"
@@ -39,11 +40,11 @@ const Verse = ({ verse }) => {
     >
       <Checkbox
         defaultChecked={isChecked}
-        alignSelf="flex-start"
-        width="100%"
+        // alignSelf="center"
+        // width={isChecked ? null : '100%'}
         colorScheme="lightgray"
-        mt="-10px"
-        ml="-10px"
+        // mt={isChecked ? null : '-10px'}
+        // ml={isChecked ? null : '-20px'}
         size="lg"
         onChange={e => {
           setChange(!change);
@@ -56,14 +57,13 @@ const Verse = ({ verse }) => {
           localStorage.setItem('@bibleChecked', JSON.stringify(updated));
         }}
       />
-      {isChecked && (
-        <Box>
+      {isChecked ? (
+        <Box w="100%">
           <Text>{verse.title}</Text>
         </Box>
-      )}
-      {!isChecked && (
+      ) : (
         <Box>
-          <Box p="10px">
+          <Box pt="0" pr="20px" pb="0" pl="30px">
             <Line text={verse.text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
             <Text align="right">{`- ${verse.title}`}</Text>
           </Box>
