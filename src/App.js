@@ -53,7 +53,7 @@ const Verses = ({ verses }) => {
 };
 
 const Header = ({ header }) => (
-  <Box>
+  <Box mt="60px">
     <Line
       text={header}
       quotes={false}
@@ -71,7 +71,7 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <Flex textAlign="center" fontSize="xl" alignItems="center" justifyContent="center">
         <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
+          {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
           <VStack spacing={8} maxWidth="600px">
             <Header header={header} />
             <Verses verses={verses} />
