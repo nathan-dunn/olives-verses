@@ -1,3 +1,5 @@
+export const title = `Olive's \n Bible Verses`;
+
 export const verses = [
   {
     title: `Deuteronomy 4:29`,

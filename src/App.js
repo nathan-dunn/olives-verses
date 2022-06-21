@@ -3,8 +3,7 @@ import { ChakraProvider, Box, Flex, Text, VStack, Grid, useColorMode } from '@ch
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import ReactAudioPlayer from 'react-audio-player';
 import { theme } from './styles';
-import { verses } from './data';
-const header = `Olive's Bible Verses`;
+import { title, verses } from './data';
 
 const Line = ({ text, quotes, style = {} }) =>
   (quotes ? '"' + text + '"' : text).split('\n').map((line, index) => (
@@ -73,7 +72,7 @@ const App = () => {
         <Grid minH="100vh" p={3}>
           {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
           <VStack spacing={8} maxWidth="600px">
-            <Header header={header} />
+            <Header header={title} />
             <Verses verses={verses} />
           </VStack>
         </Grid>
