@@ -1,3 +1,12 @@
+// [background color, color]
+export const colors = [
+  ['pink', 'black'],
+  ['lightblue', 'black'],
+  ['#b73239', 'white'],
+  ['hotpink', 'white'],
+  ['purple', 'white'],
+];
+
 export const header = `Olive's Bible Verses`;
 
 export const verses = [
