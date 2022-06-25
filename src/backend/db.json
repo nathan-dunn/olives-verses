@@ -1,0 +1,14 @@
+{
+  "profiles": [
+    { "id": 1, "name": "natronics" },
+    { "id": 2, "name": "beccarespecter" }
+  ],
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "natronics" },
+    { "id": 2, "title": "json-server", "author": "beccarespecter" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 },
+    { "id": 2, "body": "another comment", "postId": 2 }
+  ]
+}
