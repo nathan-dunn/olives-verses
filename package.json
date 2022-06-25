@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "homepage": "http://nathan-dunn.github.io/json-server",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch ./src/backend/db.json",
+    "server": "npx json-server --watch ./src/backend/db.json --port=3001",
     "surge": "NODE_ENV=production yarn build && surge --project ./build --domain https://olives-verses.surge.sh"
   },
   "dependencies": {
