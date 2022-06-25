@@ -1,7 +1,7 @@
 {
   "name": "olives-verses",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "homepage": "http://nathan-dunn.github.io/json-server",
     "predeploy": "yarn run build",
