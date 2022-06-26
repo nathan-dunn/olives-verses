@@ -1,13 +1,12 @@
 {
   "files": {
-    "main.js": "/static/js/main.321a58cd.js",
-    "static/media/deuteronomy_4_29.m4a": "/static/media/deuteronomy_4_29.bd5ac82a6a68b2f74e3b.m4a",
+    "main.js": "/static/js/main.dc96e50c.js",
     "static/media/book-heart.png": "/static/media/book-heart.98ef34bacf72fef05f32.png",
     "static/media/test.m4a": "/static/media/test.0751ab5dfbb15944536f.m4a",
     "index.html": "/index.html",
-    "main.321a58cd.js.map": "/static/js/main.321a58cd.js.map"
+    "main.dc96e50c.js.map": "/static/js/main.dc96e50c.js.map"
   },
   "entrypoints": [
-    "static/js/main.321a58cd.js"
+    "static/js/main.dc96e50c.js"
   ]
 }
