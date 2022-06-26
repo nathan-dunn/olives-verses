@@ -4,10 +4,9 @@
   "private": false,
   "scripts": {
     "homepage": "https://nathan-dunn.github.io/olives-verses",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "NODE_ENV=production yarn run build && gh-pages -d build",
     "start": "react-scripts start",
-    "build": "NODE_ENV=production react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "npx json-server --watch ./src/backend/db.json --port=3001",
