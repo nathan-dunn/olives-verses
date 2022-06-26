@@ -10,7 +10,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "npx json-server --watch ./src/backend/db.json --port=3001",
-    "surge": "yarn build && surge --project ./build --domain https://olives-verses.surge.sh"
+    "surge": "NODE_ENV=production yarn build && surge --project ./build --domain https://olives-verses.surge.sh"
   },
   "dependencies": {
     "@chakra-ui/icons": "1.1.1",
