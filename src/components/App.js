@@ -42,24 +42,22 @@ const Verse = ({ verse, color }) => {
       cursor="pointer"
       onClick={toggleCollapsed}
     >
-      {isChecked ? (
-        <Box w="100%">
-          <Text>{verse.title}</Text>
-        </Box>
-      ) : (
-        <Box>
-          <Box pt="0" pr="20px" pb="0" pl="30px">
-            <Line text={verse.text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
-            <Text align="right">{`- ${verse.title}`}</Text>
+      <Box>
+        <Text fontWeight="500">{verse.title}</Text>
+        {isChecked && (
+          <Box pt="4">
+            <Box pt="0" pr="20px" pb="0" pl="30px">
+              <Line text={verse.text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
+            </Box>
+            <ReactAudioPlayer
+              src={verse.audio}
+              autoPlay={false}
+              controls={true}
+              style={{ margin: '10px', marginTop: '30px' }}
+            />
           </Box>
-          <ReactAudioPlayer
-            src={verse.audio}
-            autoPlay={false}
-            controls={true}
-            style={{ margin: '10px', marginTop: '30px' }}
-          />
-        </Box>
-      )}
+        )}
+      </Box>
     </Flex>
   );
 };
