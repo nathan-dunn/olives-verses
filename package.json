@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "homepage": "http://nathan-dunn.github.io/olives-verses",
+    "homepage": "https://nathan-dunn.github.io/olives-verses",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
