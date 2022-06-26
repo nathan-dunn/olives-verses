@@ -5,6 +5,7 @@ export const colors = [
   ['#b73239', 'white'],
   ['hotpink', 'white'],
   ['purple', 'white'],
+  ['black', 'white'],
 ];
 
 export const header = `Olive's Bible Verses`;
