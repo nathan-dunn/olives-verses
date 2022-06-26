@@ -4,7 +4,8 @@
   "private": false,
   "scripts": {
     "homepage": "https://nathan-dunn.github.io/olives-verses",
-    "deploy": "NODE_ENV=production yarn run build && gh-pages -d build",
+    "gh": "NODE_ENV=production yarn run build && gh-pages -d ./build",
+    "deploy": "yarn surge && yarn gh",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
