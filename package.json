@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "homepage": "http://nathan-dunn.github.io/json-server",
+    "homepage": "http://nathan-dunn.github.io/olives-verses",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "npx json-server --watch ./src/backend/db.json --port=3001",
-    "surge": "NODE_ENV=production yarn build && surge --project ./build --domain https://olives-verses.surge.sh"
+    "surge": "yarn build && surge --project ./build --domain https://olives-verses.surge.sh"
   },
   "dependencies": {
     "@chakra-ui/icons": "1.1.1",
@@ -23,6 +23,7 @@
     "@testing-library/react": "^13.0.1",
     "@testing-library/user-event": "^14.1.0",
     "framer-motion": "^6.2.9",
+    "gh-pages": "^4.0.0",
     "json-server": "^0.17.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
