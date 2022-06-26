@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/static/js/main.dc96e50c.js",
+    "main.js": "/static/js/main.b8bd46d9.js",
     "static/media/book-heart.png": "/static/media/book-heart.98ef34bacf72fef05f32.png",
     "static/media/test.m4a": "/static/media/test.0751ab5dfbb15944536f.m4a",
     "index.html": "/index.html",
-    "main.dc96e50c.js.map": "/static/js/main.dc96e50c.js.map"
+    "main.b8bd46d9.js.map": "/static/js/main.b8bd46d9.js.map"
   },
   "entrypoints": [
-    "static/js/main.dc96e50c.js"
+    "static/js/main.b8bd46d9.js"
   ]
 }
