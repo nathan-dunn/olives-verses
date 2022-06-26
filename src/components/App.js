@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Box, ChakraProvider, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import ReactAudioPlayer from 'react-audio-player';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { theme } from '../styles';
 import { colors, header, verses } from '../data';
 
@@ -95,7 +98,6 @@ const Header = ({ header, onClick }) => {
         cursor="pointer"
         onClick={onClick}
       />
-
       <Text fontSize="4xl" fontFamily={`'Homemade Apple', cursive`} mb="-10px">
         {header}
       </Text>
@@ -108,13 +110,41 @@ const App = () => {
   const [colorIndex, setColorIndex] = useState(storedColor || 0);
 
   const toggleColors = () => {
-    const nextColor = colorIndex === colors.length - 1 ? 0 : colorIndex + 1;
-    localStorage.setItem('@bibleColor', nextColor);
-    setColorIndex(nextColor);
+    const nextColorIndex = colorIndex === colors.length - 1 ? 0 : colorIndex + 1;
+    localStorage.setItem('@bibleColor', nextColorIndex);
+    setColorIndex(nextColorIndex);
+
+    toast(`Color theme \n ${colorIndex + 1} of ${colors.length}`, {
+      style: {
+        whiteSpace: 'pre',
+        backgroundColor: colors[nextColorIndex][0],
+        color: colors[nextColorIndex][1],
+        height: 100,
+        textAlign: 'center',
+      },
+    });
   };
 
   return (
     <ChakraProvider theme={theme}>
+      <ToastContainer
+        position={isMobile ? 'top-right' : 'top-center'}
+        autoClose={750}
+        progress={undefined}
+        hideProgressBar={false}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        rtl={false}
+        closeOnClick
+        draggable
+        newestOnTop
+        style={{
+          marginTop: isMobile ? 115 : -15,
+          width: isMobile ? '100%' : window.innerWidth * 0.45,
+          minWidth: 380,
+          backgroundColor: colors[colorIndex],
+        }}
+      />
       <Flex textAlign="center" fontSize="xl" alignItems="center" justifyContent="center">
         <VStack spacing={8} w="90%" maxW="650px" p="10px">
           <Header header={header} onClick={toggleColors} />

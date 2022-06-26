@@ -1,11 +1,28 @@
 // [background color, color]
 export const colors = [
-  ['pink', 'black'],
-  ['lightblue', 'black'],
-  ['#b73239', 'white'],
-  ['hotpink', 'white'],
-  ['purple', 'white'],
-  ['black', 'white'],
+  ['#ffc0cb', '#000'],
+  ['#ffc0cb', '#fff'],
+
+  ['#e1a730', '#000'],
+  ['#e1a730', '#fff'],
+
+  ['#e0e3d7', '#000'],
+  ['#000', '#e0e3d7'],
+
+  ['#2879c0', '#000'],
+  ['#2879c0', '#fff'],
+
+  ['#ab3910', '#000'],
+  ['#ab3910', '#fff'],
+
+  ['#284e60', '#000'],
+  ['#284e60', '#fff'],
+
+  ['#63aac0', '#000'],
+  ['#63aac0', '#fff'],
+
+  ['#d95980', '#000'],
+  ['#d95980', '#fff'],
 ];
 
 export const header = `Olive's Bible Verses`;
@@ -38,7 +55,7 @@ export const verses = [
   },
   {
     title: `John 14:6`,
-    text: `Jesus said, 'I am the way, and the truth, and the lift. No one comes to the Father except through Me.'`,
+    text: `Jesus said, 'I am the way, and the truth, and the life. No one comes to the Father except through Me.'`,
     audio: require('./assets/test.m4a'),
   },
   {
@@ -53,7 +70,7 @@ export const verses = [
   },
   {
     title: `Psalms 118:24`,
-    text: `This is the dat that the LORD has made, let us rejoice and be glad in it.`,
+    text: `This is the day that the LORD has made, let us rejoice and be glad in it.`,
     audio: require('./assets/test.m4a'),
   },
   {
