@@ -44,7 +44,7 @@ const Verse = ({ verse, color }) => {
     >
       <Box>
         <Text fontWeight="500">{verse.title}</Text>
-        {isChecked && (
+        {!isChecked && (
           <Box pt="4">
             <Box pt="0" pr="20px" pb="0" pl="30px">
               <Line text={verse.text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
