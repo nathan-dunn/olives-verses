@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, ChakraProvider, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import ReactAudioPlayer from 'react-audio-player';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { theme } from '../styles';
@@ -85,7 +85,6 @@ const Header = ({ header, onClick }) => {
       justify="center"
       flex-wrap="wrap"
       mt="40px"
-      mb="20px"
       align={isMobile ? 'center' : 'flex-end'}
       w="100%"
     >
@@ -129,6 +128,7 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <ToastContainer
         position={isMobile ? 'top-right' : 'top-center'}
+        transition={Bounce}
         autoClose={750}
         progress={undefined}
         hideProgressBar={false}
@@ -139,7 +139,7 @@ const App = () => {
         draggable
         newestOnTop
         style={{
-          marginTop: isMobile ? 115 : -15,
+          marginTop: isMobile ? 115 : 85,
           width: isMobile ? '100%' : window.innerWidth * 0.45,
           minWidth: 380,
           backgroundColor: colors[colorIndex],
