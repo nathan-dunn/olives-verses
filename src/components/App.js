@@ -40,10 +40,13 @@ const Verse = ({ verse, color }) => {
       bg={color[0]}
       color={color[1]}
       cursor="pointer"
-      onClick={toggleCollapsed}
     >
       <Box>
-        <Text fontWeight="500">{verse.title}</Text>
+        <Box>
+          <Text fontWeight="500" onClick={toggleCollapsed}>
+            {verse.title}
+          </Text>
+        </Box>
         {!isChecked && (
           <Box pt="4">
             <Box pt="0" pr="20px" pb="0" pl="30px">
