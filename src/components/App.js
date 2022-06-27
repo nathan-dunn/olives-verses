@@ -113,12 +113,13 @@ const App = () => {
     localStorage.setItem('@bibleColor', nextColorIndex);
     setColorIndex(nextColorIndex);
 
-    toast(`Color theme \n ${colorIndex + 1} of ${colors.length}`, {
+    toast.clearWaitingQueue();
+    toast(`Color theme ${colorIndex + 1} of ${colors.length}`, {
       style: {
         whiteSpace: 'pre',
         backgroundColor: colors[nextColorIndex][0],
         color: colors[nextColorIndex][1],
-        height: 100,
+        height: 5,
         textAlign: 'center',
       },
     });
@@ -128,18 +129,16 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <ToastContainer
         position={isMobile ? 'top-right' : 'top-center'}
-        transition={Bounce}
-        autoClose={750}
+        // transition={Slide}
+        limit={1}
+        autoClose={100}
         progress={undefined}
         hideProgressBar={false}
         pauseOnHover={false}
         pauseOnFocusLoss={false}
         rtl={false}
-        closeOnClick
-        draggable
         newestOnTop
         style={{
-          marginTop: isMobile ? 115 : 85,
           width: isMobile ? '100%' : window.innerWidth * 0.45,
           minWidth: 380,
           backgroundColor: colors[colorIndex],
