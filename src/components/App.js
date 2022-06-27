@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, ChakraProvider, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import ReactAudioPlayer from 'react-audio-player';
-import { ToastContainer, toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { theme } from '../styles';
@@ -127,25 +127,22 @@ const App = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <ToastContainer
-        position={isMobile ? 'top-right' : 'top-center'}
-        // transition={Slide}
-        limit={1}
-        autoClose={100}
-        progress={undefined}
-        hideProgressBar={false}
-        pauseOnHover={false}
-        pauseOnFocusLoss={false}
-        rtl={false}
-        newestOnTop
-        style={{
-          width: isMobile ? '100%' : window.innerWidth * 0.45,
-          minWidth: 380,
-          backgroundColor: colors[colorIndex],
-        }}
-      />
       <Flex textAlign="center" fontSize="xl" alignItems="center" justifyContent="center">
         <VStack spacing={8} w="90%" maxW="650px" p="10px">
+          <ToastContainer
+            position={isMobile ? 'top-right' : 'top-center'}
+            limit={1}
+            autoClose={100}
+            hideProgressBar={false}
+            pauseOnHover={false}
+            pauseOnFocusLoss={false}
+            rtl={false}
+            newestOnTop
+            style={{
+              width: isMobile ? '100%' : '630px',
+              backgroundColor: colors[colorIndex],
+            }}
+          />
           <Header header={header} onClick={toggleColors} />
           <Verses verses={verses} color={colors[colorIndex]} />
         </VStack>
