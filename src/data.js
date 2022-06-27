@@ -31,12 +31,12 @@ export const verses = [
   {
     title: `1 Timothy 4:12`,
     text: `Let no one despise you for your youth, but set the believers an example in speech, in conduct, in love, in faith, in purity.`,
-    audio: require('./assets/test.m4a'),
+    audio: require('./assets/1_timothy_4_12_nd.m4a'),
   },
   {
     title: `1 John 4:19`,
     text: `We love because He first loved us.`,
-    audio: require('./assets/test.m4a'),
+    audio: require('./assets/1_john_4_19_od.m4a'),
   },
   {
     title: `Hebrews 13:8`,
