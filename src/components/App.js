@@ -89,7 +89,7 @@ const Header = ({ header, onClick }) => {
       w="100%"
     >
       <Image
-        src={require('../assets/book-heart.png')}
+        src={require('../assets/images/book-heart.png')}
         boxSize="50px"
         objectFit="contain"
         mr="20px"
