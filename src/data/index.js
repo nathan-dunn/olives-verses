@@ -69,7 +69,8 @@ const LIGHT_PINK = '#FFC0CB';
 const DARK = `rgba(0,0,0,0.7)`;
 const LIGHT = '#F5F5F5';
 const GRAY = `rgb(59,59,59)`;
-const LIGHT_GRAY = '#D3D3D3';
+// const LIGHT_GRAY = '#D3D3D3';
+const LIGHT_GRAY = `rgb(205,205,205)`;
 
 export const colorSchemes = [
   {
