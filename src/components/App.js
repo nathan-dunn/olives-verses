@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { Box, ChakraProvider, Flex, Image, Text, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  ChakraProvider,
+  Flex,
+  Image,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import ReactAudioPlayer from 'react-audio-player';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { theme } from '../styles';
 import { colors, header, verses } from '../data';
 
-const isMobile = window.matchMedia('only screen and (max-width: 760px)').matches;
+const isMobile = window.matchMedia(
+  'only screen and (max-width: 760px)'
+).matches;
 
 const Line = ({ text, quotes, style = {} }) =>
   (quotes ? '"' + text + '"' : text).split('\n').map((line, index) => (
@@ -18,15 +26,20 @@ const Line = ({ text, quotes, style = {} }) =>
 
 const Verse = ({ verse, color }) => {
   const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked'));
-  const isChecked = storedCheckedList && storedCheckedList.includes(verse.title);
+  const isChecked =
+    storedCheckedList && storedCheckedList.includes(verse.title);
   const [change, setChange] = useState(Symbol());
 
   const toggleCollapsed = e => {
-    const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked')) || [];
+    const storedCheckedList =
+      JSON.parse(localStorage.getItem('@bibleChecked')) || [];
     const idx = storedCheckedList.indexOf(verse.title);
     const updated =
       idx > -1
-        ? [...storedCheckedList.slice(0, idx), ...storedCheckedList.slice(idx + 1)]
+        ? [
+            ...storedCheckedList.slice(0, idx),
+            ...storedCheckedList.slice(idx + 1),
+          ]
         : [...storedCheckedList, verse.title];
     localStorage.setItem('@bibleChecked', JSON.stringify(updated));
 
@@ -53,7 +66,11 @@ const Verse = ({ verse, color }) => {
         {!isChecked && (
           <Box pt="4">
             <Box pt="0" pr="20px" pb="0" pl="30px">
-              <Line text={verse.text} quotes style={{ align: 'left', fontStyle: 'italic' }} />
+              <Line
+                text={verse.text}
+                quotes
+                style={{ align: 'left', fontStyle: 'italic' }}
+              />
             </Box>
             <ReactAudioPlayer
               src={verse.audio}
@@ -109,7 +126,8 @@ const App = () => {
   const [colorIndex, setColorIndex] = useState(storedColor || 0);
 
   const toggleColors = () => {
-    const nextColorIndex = colorIndex === colors.length - 1 ? 0 : colorIndex + 1;
+    const nextColorIndex =
+      colorIndex === colors.length - 1 ? 0 : colorIndex + 1;
     localStorage.setItem('@bibleColor', nextColorIndex);
     setColorIndex(nextColorIndex);
 
@@ -127,7 +145,13 @@ const App = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <Flex textAlign="center" fontSize="xl" alignItems="center" justifyContent="center">
+      <Flex
+        textAlign="center"
+        fontSize="xl"
+        alignItems="center"
+        justifyContent="center"
+        bg="black"
+      >
         <VStack spacing={8} w="90%" maxW="650px" p="10px">
           <ToastContainer
             position={isMobile ? 'top-right' : 'top-center'}
