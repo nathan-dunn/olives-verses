@@ -1,10 +1,6 @@
 import React from 'react';
 import { Flex, Image, Text } from '@chakra-ui/react';
 
-const isMobile = window.matchMedia(
-  'only screen and (max-width: 760px)'
-).matches;
-
 export default function Header({ image, colorScheme, onClick }) {
   const { appText } = colorScheme;
 

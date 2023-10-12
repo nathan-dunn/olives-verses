@@ -32,7 +32,7 @@ export default function Verse({ verse, colorScheme }) {
       justify="center"
       border="1px solid lightgray"
       borderRadius="5px"
-      p="20px"
+      p={3}
       mb="20px"
       bg={verseBG}
       cursor="pointer"

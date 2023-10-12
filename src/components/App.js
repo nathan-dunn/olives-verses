@@ -49,9 +49,10 @@ export default function App() {
         w={isMobile ? '100vw' : 400}
         h={isMobile ? '100vh' : '90vh'}
         p="10px"
-        br="md"
         overflow="scroll"
         bg={appBG}
+        border={`2px solid ${colorScheme.borderColor}`}
+        style={{ borderRadius: '5px' }}
       >
         <ToastContainer
           style={{

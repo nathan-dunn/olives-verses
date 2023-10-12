@@ -65,27 +65,29 @@ export const verses = [
   },
 ];
 
-const DARK_PINK = '#D95980';
 const LIGHT_PINK = '#FFC0CB';
 const DARK = `rgba(0,0,0,0.7)`;
 const LIGHT = '#F5F5F5';
 const GRAY = `rgb(59,59,59)`;
+const LIGHT_GRAY = '#D3D3D3';
 
 export const colorSchemes = [
   {
-    pageBG: DARK,
-    appBG: LIGHT_PINK,
-    appText: GRAY,
-    verseBG: GRAY,
-    verseText: LIGHT,
-    image: IMAGE_BLACK,
-  },
-  {
-    pageBG: DARK,
+    pageBG: LIGHT_GRAY,
     appBG: GRAY,
     appText: LIGHT_PINK,
     verseBG: LIGHT_PINK,
     verseText: GRAY,
     image: IMAGE_PINK,
+    borderColor: 'transparent',
+  },
+  {
+    pageBG: LIGHT_GRAY,
+    appBG: LIGHT_PINK,
+    appText: GRAY,
+    verseBG: GRAY,
+    verseText: LIGHT,
+    image: IMAGE_BLACK,
+    borderColor: GRAY,
   },
 ];
