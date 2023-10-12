@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './Header';
 import Verses from './Verses';
-import { colors, header, verses } from '../data/index.js';
+import { colorSchemes } from '../data/index.js';
 
 const isMobile = window.matchMedia(
   'only screen and (max-width: 760px)'
@@ -13,23 +13,25 @@ const isMobile = window.matchMedia(
 export default function App() {
   const storedColor = Number(localStorage.getItem('@bibleColor'));
   const [colorIndex, setColorIndex] = useState(storedColor || 0);
+  const colorScheme = colorSchemes[colorIndex];
+  const { pageBG, appBG, image } = colorScheme;
 
   const toggleColors = () => {
     const nextColorIndex =
-      colorIndex === colors.length - 1 ? 0 : colorIndex + 1;
+      colorIndex === colorSchemes.length - 1 ? 0 : colorIndex + 1;
     localStorage.setItem('@bibleColor', nextColorIndex);
     setColorIndex(nextColorIndex);
 
-    toast.clearWaitingQueue();
-    toast(`Color theme ${colorIndex + 1} of ${colors.length}`, {
-      style: {
-        whiteSpace: 'pre',
-        backgroundColor: colors[nextColorIndex][0],
-        color: colors[nextColorIndex][1],
-        height: 5,
-        textAlign: 'center',
-      },
-    });
+    // toast.clearWaitingQueue();
+    // toast(`Color theme ${colorIndex + 1} of ${colorSchemes.length}`, {
+    //   style: {
+    //     whiteSpace: 'pre',
+    //     backgroundColor: colorSchemes[nextColorIndex][0],
+    //     color: colorSchemes[nextColorIndex][1],
+    //     height: 5,
+    //     textAlign: 'center',
+    //   },
+    // });
   };
 
   return (
@@ -38,10 +40,24 @@ export default function App() {
       fontSize="xl"
       alignItems="center"
       justifyContent="center"
-      bg="black"
+      bg={pageBG}
+      pt={isMobile ? 0 : 50}
+      h="100vh"
     >
-      <VStack spacing={8} w="90%" maxW="650px" p="10px">
+      <VStack
+        spacing={8}
+        w={isMobile ? '100vw' : 400}
+        h={isMobile ? '100vh' : '90vh'}
+        p="10px"
+        br="md"
+        overflow="scroll"
+        bg={appBG}
+      >
         <ToastContainer
+          style={{
+            width: isMobile ? '100vw' : 400,
+            backgroundColor: appBG,
+          }}
           position={isMobile ? 'top-right' : 'top-center'}
           limit={1}
           autoClose={100}
@@ -50,13 +66,13 @@ export default function App() {
           pauseOnFocusLoss={false}
           rtl={false}
           newestOnTop
-          style={{
-            width: isMobile ? '100%' : '630px',
-            backgroundColor: colors[colorIndex],
-          }}
         />
-        <Header header={header} onClick={toggleColors} />
-        <Verses verses={verses} color={colors[colorIndex]} />
+        <Header
+          colorScheme={colorScheme}
+          image={image}
+          onClick={toggleColors}
+        />
+        <Verses colorScheme={colorScheme} />
       </VStack>
     </Flex>
   );

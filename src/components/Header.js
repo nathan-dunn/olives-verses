@@ -1,33 +1,43 @@
 import React from 'react';
 import { Flex, Image, Text } from '@chakra-ui/react';
-import image from '../assets/images/book-heart.png';
 
 const isMobile = window.matchMedia(
   'only screen and (max-width: 760px)'
 ).matches;
 
-export default function Header({ header, onClick }) {
+export default function Header({ image, colorScheme, onClick }) {
+  const { appText } = colorScheme;
+
   return (
-    <Flex
-      flexDirection={isMobile ? 'column' : 'row'}
-      justify="center"
-      flex-wrap="wrap"
-      mt="40px"
-      align={isMobile ? 'center' : 'flex-end'}
-      w="100%"
-    >
+    <Flex flexDirection="row" justify="space-around" align="center" w="100%">
       <Image
         src={image}
-        boxSize="50px"
+        boxSize="80px"
         objectFit="contain"
-        mr="20px"
-        mb={isMobile ? '20px' : 'auto'}
         cursor="pointer"
         onClick={onClick}
+        color={appText}
       />
-      <Text fontSize="4xl" fontFamily={`'Homemade Apple', cursive`} mb="-10px">
-        {header}
-      </Text>
+      <Flex direction="column">
+        <Text
+          fontSize="4xl"
+          fontFamily={`'Homemade Apple', cursive`}
+          color={appText}
+          align="left"
+          fontWeight="400"
+        >
+          {"Olive's"}
+        </Text>
+        <Text
+          fontSize="4xl"
+          fontFamily={`'Homemade Apple', cursive`}
+          color={appText}
+          align="left"
+          fontWeight="400"
+        >
+          {'Bible Verses'}
+        </Text>
+      </Flex>
     </Flex>
   );
 }

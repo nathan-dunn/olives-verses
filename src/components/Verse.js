@@ -3,7 +3,9 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import ReactAudioPlayer from 'react-audio-player';
 import Line from './Line';
 
-export default function Verse({ verse, color }) {
+export default function Verse({ verse, colorScheme }) {
+  const { verseBG, verseText } = colorScheme;
+
   const storedCheckedList = JSON.parse(localStorage.getItem('@bibleChecked'));
   const isChecked =
     storedCheckedList && storedCheckedList.includes(verse.title);
@@ -32,13 +34,12 @@ export default function Verse({ verse, color }) {
       borderRadius="5px"
       p="20px"
       mb="20px"
-      bg={color[0]}
-      color={color[1]}
+      bg={verseBG}
       cursor="pointer"
     >
       <Box>
         <Box>
-          <Text fontWeight="500" onClick={toggleCollapsed}>
+          <Text fontWeight="500" onClick={toggleCollapsed} color={verseText}>
             {verse.title}
           </Text>
         </Box>
@@ -48,14 +49,20 @@ export default function Verse({ verse, color }) {
               <Line
                 text={verse.text}
                 quotes
-                style={{ align: 'left', fontStyle: 'italic' }}
+                style={{ align: 'left', fontStyle: 'italic', color: verseText }}
               />
             </Box>
             <ReactAudioPlayer
               src={verse.audio}
               autoPlay={false}
               controls={true}
-              style={{ margin: '10px', marginTop: '30px' }}
+              style={{
+                margin: '10px',
+                marginTop: '30px',
+                // color: 'red',
+                // backgroundColor: 'blue',
+                // borderColor: 'green',
+              }}
             />
           </Box>
         )}
