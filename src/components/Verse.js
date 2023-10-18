@@ -59,9 +59,6 @@ export default function Verse({ verse, colorScheme }) {
               style={{
                 margin: '10px',
                 marginTop: '30px',
-                // color: 'red',
-                // backgroundColor: 'blue',
-                // borderColor: 'green',
               }}
             />
           </Box>

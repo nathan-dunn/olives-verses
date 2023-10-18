@@ -24,14 +24,14 @@ export const verses = [
     audio: b,
   },
   {
-    title: `Hebrews 13:8`,
-    text: `Jesus Christ is the same yesterday and today and forever.`,
-    audio: c,
-  },
-  {
     title: `Joshua 1:9`,
     text: `Have I not commanded you? Be strong and courageous. Do not be frightened, and do not be dismayed, for the LORD your God is with you wherever you go.`,
     audio: d,
+  },
+  {
+    title: `Hebrews 13:8`,
+    text: `Jesus Christ is the same yesterday and today and forever.`,
+    audio: c,
   },
   {
     title: `2 Timothy 1:7`,
