@@ -48,7 +48,8 @@ export default function App() {
         spacing={8}
         w={isMobile ? '100vw' : 400}
         h={isMobile ? '100vh' : '90vh'}
-        p="10px"
+        py="10px"
+        px="20px"
         overflow="scroll"
         bg={appBG}
         border={`2px solid ${colorScheme.borderColor}`}
