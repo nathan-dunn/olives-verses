@@ -1,15 +1,25 @@
 {
   "files": {
     "main.css": "/static/css/main.039bf95e.css",
-    "main.js": "/static/js/main.09797fe4.js",
-    "static/media/book-heart.png": "/static/media/book-heart.98ef34bacf72fef05f32.png",
-    "static/media/test.m4a": "/static/media/test.0751ab5dfbb15944536f.m4a",
+    "main.js": "/static/js/main.35304a03.js",
+    "static/media/1_john_4_19_od.m4a": "/static/media/1_john_4_19_od.52e8b959b73046ebcbff.m4a",
+    "static/media/colossians_3_12_bd.m4a": "/static/media/colossians_3_12_bd.daa751916e56550e6e69.m4a",
+    "static/media/1_timothy_4_12_bd.m4a": "/static/media/1_timothy_4_12_bd.2d3387305032d6a7a929.m4a",
+    "static/media/joshua_1_9_bd.m4a": "/static/media/joshua_1_9_bd.eb1a5ca57cc353a5b754.m4a",
+    "static/media/john_14_6_bd.m4a": "/static/media/john_14_6_bd.05f8c6b5b0f94713c721.m4a",
+    "static/media/2_timothy_1_7_bd.m4a": "/static/media/2_timothy_1_7_bd.2f5769830a932458f51f.m4a",
+    "static/media/psalms_119_105.m4a": "/static/media/psalms_119_105.835ac6aa856b0c1508e3.m4a",
+    "static/media/mathew_22_37_bd.m4a": "/static/media/mathew_22_37_bd.d104428861ec5fc25199.m4a",
+    "static/media/psalms_118_24_bd.m4a": "/static/media/psalms_118_24_bd.924d21c9abfe7373b45a.m4a",
+    "static/media/hebrews_13_8_od.m4a": "/static/media/hebrews_13_8_od.258cf1acfcb29084a3e9.m4a",
+    "static/media/book-heart_PINK.png": "/static/media/book-heart_PINK.b0449fbd3d68e56b3c60.png",
+    "static/media/book-heart_BLACK.png": "/static/media/book-heart_BLACK.28a4a3e463da0e7d709d.png",
     "index.html": "/index.html",
     "main.039bf95e.css.map": "/static/css/main.039bf95e.css.map",
-    "main.09797fe4.js.map": "/static/js/main.09797fe4.js.map"
+    "main.35304a03.js.map": "/static/js/main.35304a03.js.map"
   },
   "entrypoints": [
     "static/css/main.039bf95e.css",
-    "static/js/main.09797fe4.js"
+    "static/js/main.35304a03.js"
   ]
 }
